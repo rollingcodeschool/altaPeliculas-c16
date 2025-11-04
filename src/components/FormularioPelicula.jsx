@@ -33,6 +33,9 @@ const FormularioPelicula = () => {
             <option value="Comedia">Comedia</option>
             <option value="Aventura">Aventura</option>
           </Form.Select>
+          <Form.Text className="text-danger">
+            Error al cargar pelicula
+          </Form.Text>
         </Form.Group>
         <Button variant="primary" type="submit">
           Enviar
