@@ -1,12 +1,16 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+import FormularioPelicula from "./components/FormularioPelicula";
 
 function App() {
-
   return (
     <>
-     <div></div>
-      
+      <Container className="my-5">
+        <h1 className="text-center">Alta de peliculas</h1>
+        <FormularioPelicula></FormularioPelicula>
+      </Container>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
