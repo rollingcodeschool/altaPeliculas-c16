@@ -1,17 +1,24 @@
 import { Form, Button } from "react-bootstrap";
 import GrillaPeliculas from "./GrillaPeliculas";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const FormularioPelicula = () => {
+  const [peliculas, setPeliculas] = useState([])
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const posteriorValidacion = (pelicula) => {
-    console.log(pelicula);
     //todo agregar al objeto pelicula un ID unico 
+    pelicula.id = crypto.randomUUID() // eusud237467-asdgas2-asfhsd343
+    console.log(pelicula);
+    reset()
+    //almacenar la pelicula creada
+    setPeliculas([...peliculas, pelicula])
   };
 
   return (
