@@ -1,16 +1,21 @@
 import { Form, Button } from "react-bootstrap";
 import GrillaPeliculas from "./GrillaPeliculas";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FormularioPelicula = () => {
-  const [peliculas, setPeliculas] = useState([])
+  const peliculasLocalstorage = JSON.parse(localStorage.getItem('peliculasKey')) || []
+  const [peliculas, setPeliculas] = useState(peliculasLocalstorage)
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset
   } = useForm();
+  
+  useEffect(()=>{
+    localStorage.setItem('peliculasKey', JSON.stringify(peliculas))
+  })
 
   const posteriorValidacion = (pelicula) => {
     //todo agregar al objeto pelicula un ID unico 
@@ -92,7 +97,7 @@ const FormularioPelicula = () => {
           Enviar
         </Button>
       </Form>
-      <GrillaPeliculas></GrillaPeliculas>
+      <GrillaPeliculas peliculas={peliculas}></GrillaPeliculas>
     </section>
   );
 };
